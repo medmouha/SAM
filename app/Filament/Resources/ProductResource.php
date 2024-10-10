@@ -28,6 +28,8 @@ class ProductResource extends Resource
                     ->label('Nom')
                     ->required()
                     ->maxLength(191),
+                Forms\Components\TextInput::make('description')
+                    ->label('Description'),
                 Forms\Components\TextInput::make('price')
                     ->label('Prix')
                     ->required()
@@ -38,13 +40,9 @@ class ProductResource extends Resource
                     ->image()
                     ->required()
                     ->disk('public') // Utilisez le disque public
-                    ->directory('images/products') // Spécifiez le répertoire de stockage
-                    ->visibility('public') // Assurez-vous que les fichiers sont publics
-                    ->imagePreviewHeight('250') // Hauteur de l'aperçu de l'image
-                    ->imageCropAspectRatio('1:1') // Option de recadrage
-                    ->imageResizeTargetWidth('500') // Redimensionner l'image (facultatif)
-                    ->imageResizeTargetHeight('500'), // Redimensionner l'image (facultatif)
-                Forms\Components\Select::make('categorie_id')
+                    //->directory('images/products') // Spécifiez le répertoire de stockage
+                    ->visibility('public'), // Assurez-vous que les fichiers sont publics
+                Forms\Components\Select::make('category_id')
                     ->label('Categorie')
                     ->required()
                     ->relationship('category', 'name')
@@ -59,6 +57,8 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nom')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Description'),
                 Tables\Columns\TextColumn::make('price')
                     ->label('Prix')
                     ->prefix('CFA')

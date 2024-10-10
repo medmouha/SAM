@@ -12,10 +12,18 @@ class Product extends Model
 
     protected $fillable= [
         'name',
+        'description',
         'price',
         'image',
-        'categorie_id'
+        'category_id',
+        'availability'
     ];
+
+    // Accesseur pour l'URL complète de l'image
+    public function getImageUrlAttribute()
+    {
+        return asset('storage/' . $this->image);
+    }
 
     public function category():BelongsTo
     {

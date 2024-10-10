@@ -29,6 +29,6 @@ class ContactController extends Controller
         Mail::to('medmouha93@gmail.com')->send(new ContactFormSubmitted($contact));
 
         // Redirection après la soumission du formulaire avec un message de succès
-        return redirect()->back()->with('success', 'Your message has been sent successfully. We will get back to you shortly.');
+        return redirect()->back()->with('success', 'Votre message a été envoyé avec succès.');
     }
 }
